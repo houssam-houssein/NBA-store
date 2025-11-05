@@ -1,0 +1,381 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  padding: 0;
+  border-bottom: none;
+}
+
+.navbar-container {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  gap: 40px;
+}
+
+/* Logo Section */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.logo-img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Navigation Links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-link {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: opacity 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  opacity: 0.7;
+}
+
+.more-link {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #000000;
+  min-width: 150px;
+  padding: 10px 0;
+  margin-top: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu a {
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Right Side Group - All content except logo */
+.navbar-right-group {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Right Side - Search and Login */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  padding: 5px 30px 5px 0;
+  width: 150px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.search-input:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.7);
+}
+
+.search-icon {
+  position: absolute;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.search-icon:hover {
+  opacity: 0.7;
+}
+
+.login-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: opacity 0.3s ease;
+}
+
+.login-link:hover {
+  opacity: 0.7;
+}
+
+.login-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive Design - Extra Large Screens */
+@media (max-width: 1440px) {
+  .navbar-container {
+    padding: 15px 35px;
+  }
+  
+  .navbar-links {
+    gap: 25px;
+  }
+}
+
+/* Large Screens */
+@media (max-width: 1200px) {
+  .navbar-container {
+    padding: 15px 30px;
+    gap: 30px;
+  }
+  
+  .navbar-links {
+    gap: 18px;
+  }
+  
+  .nav-link {
+    font-size: 11px;
+    letter-spacing: 0.8px;
+  }
+  
+  .logo-img {
+    height: 55px;
+  }
+  
+  .search-input {
+    width: 140px;
+  }
+  
+  .navbar-right-group {
+    gap: 25px;
+  }
+}
+
+/* Medium Screens / Tablets */
+@media (max-width: 968px) {
+  .navbar-container {
+    flex-wrap: wrap;
+    padding: 15px 25px;
+    gap: 20px;
+  }
+  
+  .navbar-right-group {
+    flex-wrap: wrap;
+    gap: 18px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .navbar-links {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .nav-link {
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+  
+  .logo-img {
+    height: 50px;
+  }
+  
+  .search-input {
+    width: 120px;
+    font-size: 11px;
+  }
+  
+  .login-link {
+    font-size: 11px;
+  }
+  
+  .login-link svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Small Screens / Mobile Landscape */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 12px 20px;
+    gap: 15px;
+  }
+  
+  .navbar-logo {
+    flex: 0 0 auto;
+  }
+  
+  .logo-img {
+    height: 45px;
+  }
+  
+  .navbar-right-group {
+    gap: 15px;
+  }
+  
+  .navbar-links {
+    display: none;
+  }
+  
+  .search-input {
+    width: 100px;
+    font-size: 10px;
+    padding: 4px 25px 4px 0;
+  }
+  
+  .search-icon {
+    padding: 4px;
+  }
+  
+  .search-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .login-link {
+    font-size: 10px;
+    gap: 6px;
+  }
+  
+  .login-link svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Extra Small Screens / Mobile Portrait */
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 10px 15px;
+    gap: 12px;
+  }
+  
+  .logo-img {
+    height: 40px;
+  }
+  
+  .navbar-right-group {
+    gap: 12px;
+  }
+  
+  .search-input {
+    width: 80px;
+    font-size: 9px;
+  }
+  
+  .search-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .login-link span {
+    display: none; /* Hide text, show only icon */
+  }
+  
+  .login-link {
+    padding: 5px;
+  }
+  
+  .login-link svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Very Small Screens */
+@media (max-width: 360px) {
+  .navbar-container {
+    padding: 8px 12px;
+  }
+  
+  .logo-img {
+    height: 35px;
+  }
+  
+  .search-input {
+    width: 70px;
+  }
+}
+
+/* Height-based adjustments for landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .navbar-container {
+    padding: 10px 20px;
+  }
+  
+  .logo-img {
+    height: 40px;
+  }
+}
+
