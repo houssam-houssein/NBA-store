@@ -1,0 +1,321 @@
+.login-page {
+  background-color: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  padding: 140px 40px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.close-button {
+  position: fixed;
+  top: 100px;
+  right: 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  z-index: 1001;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.close-button:hover {
+  opacity: 0.7;
+  transform: rotate(90deg);
+}
+
+.close-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.login-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.signup-link-text {
+  font-size: 16px;
+  margin-bottom: 40px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.signup-text-link {
+  color: #ffffff;
+  text-decoration: underline;
+  transition: opacity 0.3s ease;
+}
+
+.signup-text-link:hover {
+  opacity: 0.7;
+}
+
+.login-buttons {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.login-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+.login-google {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.login-facebook {
+  background-color: #1877F2;
+  color: #ffffff;
+}
+
+.login-email {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.google-icon {
+  flex-shrink: 0;
+}
+
+.facebook-icon {
+  flex-shrink: 0;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.divider-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive adjustments - Large Screens */
+@media (max-width: 1200px) {
+  .login-page {
+    padding: 130px 35px 60px;
+  }
+  
+  .login-buttons {
+    max-width: 380px;
+  }
+}
+
+/* Medium Screens / Tablets */
+@media (max-width: 968px) {
+  .login-page {
+    padding: 125px 30px 50px;
+  }
+  
+  .close-button {
+    top: 90px;
+    right: 30px;
+  }
+  
+  .login-title {
+    font-size: 42px;
+  }
+  
+  .login-buttons {
+    max-width: 360px;
+  }
+}
+
+/* Small Screens / Mobile Landscape */
+@media (max-width: 768px) {
+  .login-page {
+    padding: 120px 20px 40px;
+  }
+
+  .close-button {
+    top: 80px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .close-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .login-title {
+    font-size: 36px;
+    margin-bottom: 18px;
+  }
+
+  .signup-link-text {
+    font-size: 15px;
+    margin-bottom: 35px;
+  }
+
+  .login-buttons {
+    max-width: 100%;
+  }
+  
+  .login-btn {
+    padding: 13px 18px;
+    font-size: 15px;
+  }
+}
+
+/* Extra Small Screens / Mobile Portrait */
+@media (max-width: 480px) {
+  .login-page {
+    padding: 100px 15px 30px;
+  }
+
+  .close-button {
+    top: 70px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .close-button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .login-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+
+  .signup-link-text {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .login-btn {
+    padding: 12px 16px;
+    font-size: 14px;
+    gap: 10px;
+  }
+  
+  .login-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .divider {
+    gap: 12px;
+    margin: 6px 0;
+  }
+  
+  .divider-text {
+    font-size: 12px;
+  }
+}
+
+/* Very Small Screens */
+@media (max-width: 360px) {
+  .login-page {
+    padding: 90px 12px 25px;
+  }
+
+  .close-button {
+    top: 65px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .close-button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
+
+  .login-btn {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+}
+
+/* Height-based adjustments for landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .login-page {
+    padding: 100px 20px 30px;
+  }
+  
+  .close-button {
+    top: 75px;
+    right: 20px;
+  }
+  
+  .login-title {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+  
+  .signup-link-text {
+    margin-bottom: 25px;
+  }
+  
+  .login-btn {
+    padding: 10px 16px;
+  }
+}
+
