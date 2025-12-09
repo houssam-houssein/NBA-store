@@ -1,0 +1,1340 @@
+.homepage {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  background-color: #000000;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(40, 40, 40, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(30, 30, 30, 0.2) 0%, transparent 50%),
+    linear-gradient(135deg, #0a0a0a 0%, #000000 50%, #0a0a0a 100%);
+  position: relative;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Honeycomb/Mesh background pattern */
+.homepage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 33.33% 33.33%, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    radial-gradient(circle at 66.66% 66.66%, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px, 45px 45px, 55px 55px;
+  background-position: 0 0, 15px 15px, 30px 30px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.homepage-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Main Poster */
+.main-logo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Background Poster - Fills the screen */
+.main-poster-bg {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+/* Logo Poster - Centered and fully visible */
+.main-poster-logo {
+  width: 100%;
+  height: auto;
+  max-width: 105%;
+  max-height: 105vh;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  position: relative;
+  z-index: 2;
+  margin: auto;
+}
+
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  margin-top: 0;
+  color: white;
+  animation: bounce 2s infinite;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.scroll-indicator:hover {
+  opacity: 0.7;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* PA Background Section */
+.pa-background-section {
+  width: 100%;
+  height: 390px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0 solid transparent;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.pa-background-section:hover {
+  border: 3px solid #00ff00;
+  box-sizing: border-box;
+}
+
+.pa-background-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.pa-content-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.pa-shop-now-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.pa-shop-now-left:hover {
+  color: #00ff00;
+  transform: scale(1.05);
+}
+
+.pa-text-content {
+  text-align: right;
+}
+
+.pa-category-link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.pa-category-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.pa-category-description {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px 0 0 0;
+  color: #ffffff;
+}
+
+/* Influencers Background Section */
+.influencers-background-section {
+  width: 100%;
+  height: 390px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0 solid transparent;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.influencers-background-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.influencers-background-section:hover {
+  border: 3px solid #00ff00;
+  box-sizing: border-box;
+}
+
+.influencers-content-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.influencers-text-content {
+  text-align: left;
+}
+
+.influencers-category-link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.influencers-category-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.influencers-category-description {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px 0 0 0;
+  color: #ffffff;
+}
+
+.influencers-shop-now-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.influencers-shop-now-right:hover {
+  color: #00ff00;
+  transform: scale(1.05);
+}
+
+/* Shop Section */
+.shop-section {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000000;
+  padding: 80px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 60px;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  min-height: 800px;
+  position: relative;
+}
+
+.shop-now-top-left,
+.shop-now-bottom-right,
+.shop-now-left-high-school,
+.shop-now-left-teamwear,
+.shop-now-right-teamwear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.shop-now-top-left {
+  grid-column: 1;
+  grid-row: 1;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.shop-now-bottom-right {
+  grid-column: 2;
+  grid-row: 2;
+  justify-content: flex-end;
+}
+
+.shop-now-left-high-school {
+  grid-column: 1;
+  grid-row: 3;
+  justify-content: flex-start;
+}
+
+.shop-now-left-teamwear {
+  grid-column: 1;
+  grid-row: 4;
+  justify-content: flex-start;
+}
+
+.shop-now-right-teamwear {
+  grid-column: 2;
+  grid-row: 4;
+  justify-content: flex-end;
+}
+
+.shop-now-top-left:hover,
+.shop-now-bottom-right:hover,
+.shop-now-left-high-school:hover,
+.shop-now-left-teamwear:hover,
+.shop-now-right-teamwear:hover {
+  opacity: 0.7;
+  transform: scale(1.05);
+}
+
+.section-with-shop {
+  display: contents;
+}
+
+.mobile-shop-now {
+  display: none;
+}
+
+.desktop-shop-now {
+  display: flex;
+}
+
+.shop-category {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  text-decoration: none;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.shop-category:hover {
+  opacity: 0.8;
+  transform: translateY(-5px);
+}
+
+.category-feed {
+  grid-column: span 2;
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+.section-with-shop .category-feed {
+  grid-column: auto;
+  width: 100%;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.category-feed-loading,
+.category-feed-empty {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.category-feed-coming-soon {
+  padding: 16px 0;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.coming-soon-label {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fbbf24;
+}
+
+.category-feed-coming-soon p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+.category-feed-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.category-feed-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.feed-item-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 70%;
+}
+
+.feed-item-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.feed-item-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.4;
+}
+
+.feed-item-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.feed-item-price {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.feed-item-status {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feed-item-status.status-active {
+  color: #4ade80;
+  border-color: #4ade80;
+}
+
+.feed-item-status.status-draft {
+  color: #ffffff;
+}
+
+.feed-item-status.status-coming-soon {
+  color: #fbbf24;
+  border-color: #fbbf24;
+}
+
+.feed-item-status.status-archived,
+.feed-item-status.status-custom {
+  color: #93c5fd;
+  border-color: #93c5fd;
+}
+
+.professional-athletes {
+  grid-column: 2;
+  grid-row: 1;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.influencers {
+  grid-column: 1;
+  grid-row: 2;
+  align-items: flex-start;
+}
+
+.high-school-athletes {
+  grid-column: 2;
+  grid-row: 3;
+  align-items: flex-start;
+}
+
+.teamwear {
+  grid-column: 1;
+  grid-row: 4;
+  align-items: flex-start;
+}
+
+/* About Us Section - Full Width */
+.about-us-section {
+  width: 100%;
+  max-width: 100vw;
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 40px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.about-us-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.about-us-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.about-us-title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 30px;
+  text-align: center;
+  letter-spacing: 2px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.about-us-text {
+  width: 100%;
+}
+
+.about-us-paragraph {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.about-us-mission-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 20px 0;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.about-us-mission-list li {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+  padding-left: 30px;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.about-us-mission-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.category-title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.category-description {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  max-width: 400px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Responsive Design - Extra Large Screens */
+@media (max-width: 1440px) {
+  .professional-athletes-row-bg {
+    left: calc(50% - 50vw);
+    right: calc(50% - 50vw);
+    width: 100vw;
+    margin-top: -80px;
+    padding-top: 80px;
+  }
+  
+  .shop-grid {
+    max-width: 1100px;
+    gap: 50px;
+    min-height: 720px;
+  }
+  
+  .category-title {
+    font-size: 44px;
+  }
+  
+  .shop-now-top-left,
+  .shop-now-bottom-right,
+  .shop-now-left-high-school,
+  .shop-now-left-teamwear,
+  .shop-now-right-teamwear,
+  .pa-shop-now-left,
+  .influencers-shop-now-right {
+    font-size: 30px;
+  }
+  
+  .about-us-section {
+    padding: 90px 35px;
+    min-height: 550px;
+  }
+  
+  .about-us-title {
+    font-size: 44px;
+  }
+  
+  .about-us-paragraph,
+  .about-us-mission-list li {
+    font-size: 17px;
+  }
+}
+
+/* Large Screens */
+@media (max-width: 1200px) {
+  .professional-athletes-row-bg {
+    left: calc(50% - 50vw);
+    right: calc(50% - 50vw);
+    width: 100vw;
+    margin-top: -70px;
+    padding-top: 70px;
+  }
+  
+  .shop-section {
+    padding: 70px 35px;
+  }
+  
+  .shop-grid {
+    gap: 45px;
+    min-height: 680px;
+  }
+  
+  .category-title {
+    font-size: 40px;
+  }
+  
+  .category-description {
+    font-size: 17px;
+    max-width: 350px;
+  }
+  
+  .shop-now-top-left,
+  .shop-now-bottom-right,
+  .shop-now-left-high-school,
+  .shop-now-left-teamwear,
+  .shop-now-right-teamwear,
+  .pa-shop-now-left,
+  .influencers-shop-now-right {
+    font-size: 28px;
+  }
+  
+  .about-us-section {
+    padding: 80px 30px;
+    min-height: 500px;
+  }
+  
+  .about-us-title {
+    font-size: 40px;
+  }
+  
+  .about-us-paragraph,
+  .about-us-mission-list li {
+    font-size: 17px;
+  }
+}
+
+/* Medium Screens / Tablets */
+@media (max-width: 968px) {
+  .professional-athletes-row-bg {
+    left: calc(50% - 50vw);
+    right: calc(50% - 50vw);
+    width: 100vw;
+    margin-top: -60px;
+    padding-top: 60px;
+  }
+  
+  .homepage-content {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+  }
+  
+  .main-logo {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    max-width: 100vw;
+  }
+  
+  .main-poster-bg {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+  
+  .main-poster-logo {
+    max-width: 95%;
+    max-height: 95vh;
+  }
+  
+  .scroll-indicator {
+    bottom: 30px;
+  }
+  
+  .shop-section {
+    padding: 60px 30px;
+  }
+  
+  .shop-grid {
+    gap: 40px;
+    min-height: 620px;
+  }
+  
+  .shop-category {
+    padding: 30px;
+  }
+  
+  .category-title {
+    font-size: 36px;
+    margin-bottom: 18px;
+  }
+  
+  .category-description {
+    font-size: 16px;
+    max-width: 300px;
+  }
+  
+  .shop-now-top-left,
+  .shop-now-bottom-right,
+  .shop-now-left-high-school,
+  .shop-now-left-teamwear,
+  .shop-now-right-teamwear,
+  .pa-shop-now-left,
+  .influencers-shop-now-right {
+    font-size: 26px;
+  }
+  
+  .about-us-section {
+    padding: 70px 30px;
+    min-height: 450px;
+  }
+  
+  .about-us-title {
+    font-size: 36px;
+  }
+  
+  .about-us-paragraph,
+  .about-us-mission-list li {
+    font-size: 16px;
+  }
+}
+
+/* Small Screens / Mobile Landscape */
+@media (max-width: 768px) {
+  .homepage-content {
+    width: 100%;
+    height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px);
+    max-width: 100vw;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-logo {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-poster-bg {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+  
+  .main-poster-logo {
+    max-width: 120%;
+    max-height: 120vh;
+    width: 120%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+  }
+  
+  .scroll-indicator {
+    bottom: 25px;
+  }
+  
+  .scroll-indicator svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .shop-section {
+    padding: 50px 25px;
+    min-height: auto;
+  }
+  
+  .shop-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 35px;
+    min-height: auto;
+  }
+  
+  .section-with-shop {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .mobile-shop-now {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  
+  .desktop-shop-now {
+    display: none;
+  }
+  
+  .shop-now-top-left:not(.mobile-shop-now) {
+    display: none;
+  }
+  
+  .professional-athletes-row-bg {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 300px;
+    left: calc(50% - 50vw);
+    right: calc(50% - 50vw);
+    width: 100vw;
+    margin-top: -50px;
+    padding-top: 50px;
+  }
+  
+  .professional-athletes {
+    grid-column: 1;
+    grid-row: auto;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .influencers {
+    grid-column: 1;
+    grid-row: auto;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .high-school-athletes {
+    grid-column: 1;
+    grid-row: auto;
+    align-items: center;
+    width: 100%;
+  }
+
+  .teamwear {
+    grid-column: 1;
+    grid-row: auto;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .about-us-section {
+    padding: 60px 25px;
+    min-height: 400px;
+  }
+  
+  .about-us-content {
+    max-width: 100%;
+  }
+  
+  .about-us-title {
+    font-size: 32px;
+    margin-bottom: 25px;
+  }
+  
+  .about-us-paragraph,
+  .about-us-mission-list li {
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+  
+  .about-us-mission-list {
+    margin: 18px 0;
+  }
+  
+  .about-us-mission-list li {
+    margin-bottom: 10px;
+  }
+  
+  .shop-category {
+    padding: 25px 20px;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .category-title {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+  
+  .category-description {
+    font-size: 15px;
+    max-width: 100%;
+  }
+  
+  .shop-now-top-left,
+  .shop-now-bottom-right,
+  .shop-now-left-high-school,
+  .shop-now-left-teamwear,
+  .shop-now-right-teamwear,
+  .pa-shop-now-left,
+  .influencers-shop-now-right {
+    font-size: 24px;
+  }
+}
+
+/* Extra Small Screens / Mobile Portrait */
+@media (max-width: 480px) {
+  .homepage-content {
+    width: 100%;
+    height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
+    max-width: 100vw;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-logo {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-poster-bg {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+  
+  .main-poster-logo {
+    max-width: 130%;
+    max-height: 130vh;
+    width: 130%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+  }
+  
+  .scroll-indicator {
+    bottom: 20px;
+  }
+  
+  .scroll-indicator svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .professional-athletes-row-bg {
+    left: calc(50% - 50vw);
+    right: calc(50% - 50vw);
+    width: 100vw;
+    margin-top: -40px;
+    padding-top: 40px;
+  }
+  
+  .shop-section {
+    padding: 40px 20px;
+  }
+  
+  .shop-grid {
+    gap: 30px;
+  }
+  
+  .section-with-shop {
+    gap: 15px;
+  }
+  
+  .mobile-shop-now {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+  
+  .shop-category {
+    padding: 20px 15px;
+  }
+  
+  .category-title {
+    font-size: 28px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+  
+  .category-description {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .about-us-section {
+    padding: 50px 20px;
+    min-height: 350px;
+  }
+  
+  .about-us-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-paragraph,
+  .about-us-mission-list li {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  
+  .about-us-mission-list {
+    margin: 16px 0;
+  }
+  
+  .about-us-mission-list li {
+    margin-bottom: 8px;
+    padding-left: 25px;
+  }
+
+  .shop-now-top-left,
+  .shop-now-bottom-right,
+  .shop-now-left-high-school,
+  .shop-now-left-teamwear,
+  .shop-now-right-teamwear,
+  .pa-shop-now-left,
+  .influencers-shop-now-right {
+    font-size: 22px;
+  }
+}
+
+/* Very Small Screens */
+@media (max-width: 360px) {
+  .homepage-content {
+    width: 100%;
+    height: calc(100vh - 55px);
+    min-height: calc(100vh - 55px);
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-logo {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-poster-bg {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+  
+  .main-poster-logo {
+    max-width: 140%;
+    max-height: 140vh;
+    width: 140%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+  }
+  
+  .professional-athletes-row-bg {
+    left: calc(50% - 50vw);
+    right: calc(50% - 50vw);
+    width: 100vw;
+    margin-top: -35px;
+    padding-top: 35px;
+  }
+  
+  .shop-section {
+    padding: 35px 15px;
+  }
+  
+  .shop-grid {
+    gap: 25px;
+  }
+  
+  .shop-category {
+    padding: 18px 12px;
+  }
+  
+  .category-title {
+    font-size: 24px;
+  }
+  
+  .category-description {
+    font-size: 13px;
+  }
+  
+  .mobile-shop-now {
+    font-size: 18px;
+  }
+
+  .shop-now-top-left,
+  .shop-now-bottom-right,
+  .shop-now-left-high-school,
+  .shop-now-left-teamwear,
+  .shop-now-right-teamwear,
+  .pa-shop-now-left,
+  .influencers-shop-now-right {
+    font-size: 20px;
+  }
+  
+  .about-us-section {
+    padding: 40px 15px;
+    min-height: 300px;
+  }
+  
+  .about-us-title {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+  
+  .about-us-paragraph,
+  .about-us-mission-list li {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  
+  .about-us-mission-list {
+    margin: 14px 0;
+  }
+  
+  .about-us-mission-list li {
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+}
+
+/* Height-based adjustments for landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .homepage-content {
+    width: 100%;
+    height: calc(100vh - 50px);
+    min-height: calc(100vh - 50px);
+    max-width: 100vw;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-logo {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-poster-bg {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+  
+  .main-poster-logo {
+    max-width: 130%;
+    max-height: 130vh;
+    width: 130%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+  }
+  
+  .professional-athletes-row-bg {
+    left: calc(50% - 50vw);
+    right: calc(50% - 50vw);
+    width: 100vw;
+    margin-top: -30px;
+    padding-top: 30px;
+  }
+  
+  .shop-section {
+    padding: 30px 25px;
+  }
+  
+  .shop-grid {
+    gap: 25px;
+    min-height: auto;
+  }
+  
+  .category-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .category-description {
+    font-size: 13px;
+  }
+  
+  .scroll-indicator {
+    bottom: 15px;
+  }
+}
+
