@@ -9,6 +9,7 @@ const AdminLoginPage = () => {
   const [showForgotPassword, setShowForgotPassword] = useState(false)
   const [statusMessage, setStatusMessage] = useState('')
   const [statusType, setStatusType] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const AdminLoginPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault()
     if (!formData.email || !formData.password) {
       setStatusType('error')
@@ -31,33 +32,57 @@ const AdminLoginPage = () => {
       return
     }
 
+    setIsLoading(true)
     setStatusType('info')
     setStatusMessage('Authenticating admin access...')
 
-    fetch(`${API_URL}/api/admin/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-      credentials: 'include'
-    })
-      .then(async (response) => {
-        if (!response.ok) {
+    try {
+      const response = await fetch(`${API_URL}/api/admin/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+        credentials: 'include'
+      })
+
+      if (!response.ok) {
+        let errorMessage = 'Login failed'
+        try {
           const data = await response.json()
-          throw new Error(data.error || 'Login failed')
+          errorMessage = data.error || errorMessage
+        } catch (parseError) {
+          errorMessage = `Server error: ${response.status}`
         }
-        return response.json()
-      })
-      .then((data) => {
-        setStatusType('success')
-      setStatusMessage('Login successful. Redirecting...')
-        localStorage.setItem('isAdminAuthenticated', 'true')
+        throw new Error(errorMessage)
+      }
+
+      const data = await response.json()
+      
+      // Set authentication before navigation
+      localStorage.setItem('isAdminAuthenticated', 'true')
+      if (data.admin) {
         localStorage.setItem('adminUser', JSON.stringify(data.admin))
-        setTimeout(() => navigate('/admin'), 800)
-      })
-      .catch((error) => {
-        setStatusType('error')
-        setStatusMessage(error.message)
-      })
+      }
+      
+      setStatusType('success')
+      setStatusMessage('Login successful. Redirecting...')
+      
+      // Navigate after a short delay to ensure localStorage is set
+      setTimeout(() => {
+        try {
+          navigate('/admin', { replace: true })
+        } catch (navError) {
+          console.error('Navigation error:', navError)
+          setStatusType('error')
+          setStatusMessage('Login successful but navigation failed. Please refresh the page.')
+        }
+      }, 800)
+    } catch (error) {
+      console.error('Login error:', error)
+      setStatusType('error')
+      setStatusMessage(error.message || 'An error occurred during login. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleForgotPassword = (e) => {
@@ -111,8 +136,8 @@ const AdminLoginPage = () => {
           </div>
 
           <div className='form-actions'>
-            <button type='submit' className='primary-button'>
-              enter dashboard
+            <button type='submit' className='primary-button' disabled={isLoading}>
+              {isLoading ? 'Authenticating...' : 'enter dashboard'}
             </button>
             <button
               type='button'

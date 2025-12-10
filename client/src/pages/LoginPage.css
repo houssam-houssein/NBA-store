@@ -44,6 +44,95 @@
   height: 24px;
 }
 
+.login-message {
+  position: fixed;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1002;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: slideDownMessage 0.3s ease;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+@keyframes slideDownMessage {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.login-message-success {
+  background-color: #00ff00;
+  color: #000000;
+  border: 2px solid #00cc00;
+}
+
+.login-message-error {
+  background-color: #ff4444;
+  color: #ffffff;
+  border: 2px solid #cc0000;
+}
+
+.login-message-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.login-message-text {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.login-message-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.login-message-close:hover {
+  opacity: 1;
+}
+
+.login-message-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.login-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-btn:disabled:hover {
+  transform: none;
+  opacity: 0.6;
+}
+
 .login-title {
   font-size: 48px;
   font-weight: bold;
@@ -106,11 +195,6 @@
   background-color: #ffffff;
   color: #000000;
   border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.login-facebook {
-  background-color: #1877F2;
-  color: #ffffff;
 }
 
 .login-email {
@@ -189,10 +273,6 @@
 }
 
 .google-icon {
-  flex-shrink: 0;
-}
-
-.facebook-icon {
   flex-shrink: 0;
 }
 

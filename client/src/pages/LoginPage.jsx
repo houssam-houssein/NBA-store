@@ -11,14 +11,11 @@ const LoginPage = () => {
     email: '',
     password: ''
   })
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+  const [message, setMessage] = useState({ type: null, text: '' })
+  const [isLoading, setIsLoading] = useState(false)
 
-  // Redirect if already authenticated
-  useEffect(() => {
-    if (authenticated) {
-      navigate('/')
-    }
-  }, [authenticated, navigate])
-
+  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({
@@ -27,11 +24,79 @@ const LoginPage = () => {
     }))
   }
 
-  const handleSubmit = (e) => {
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (authenticated) {
+      navigate('/')
+    }
+  }, [authenticated, navigate])
+
+  // Check for error messages from URL params
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const error = urlParams.get('error')
+    if (error) {
+      let errorMessage = 'Login failed. Please try again.'
+      if (error === 'auth_failed') {
+        errorMessage = 'Authentication failed. Please try again.'
+      } else if (error === 'no_user') {
+        errorMessage = 'User not found. Please sign up first.'
+      } else if (error === 'session_failed') {
+        errorMessage = 'Session creation failed. Please try again.'
+      }
+      setMessage({ type: 'error', text: errorMessage })
+      // Clear URL params
+      window.history.replaceState({}, '', window.location.pathname)
+    }
+  }, [])
+
+  // Auto-hide message after 5 seconds
+  useEffect(() => {
+    if (message.type) {
+      const timer = setTimeout(() => {
+        setMessage({ type: null, text: '' })
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [message])
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Login form submitted:', formData)
-    // You can add API call here to submit the login data
+    setIsLoading(true)
+    setMessage({ type: null, text: '' })
+
+    try {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include', // Important for session cookies
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password
+        })
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setMessage({ type: 'success', text: 'Login successful! Redirecting...' })
+        // Update auth context
+        await login()
+        // Navigate to homepage after a short delay
+        setTimeout(() => {
+          navigate('/')
+        }, 1000)
+      } else {
+        setMessage({ type: 'error', text: data.error || 'Login failed. Please try again.' })
+      }
+    } catch (error) {
+      console.error('Login error:', error)
+      setMessage({ type: 'error', text: 'An error occurred during login. Please try again.' })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -42,6 +107,36 @@ const LoginPage = () => {
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </Link>
+      
+      {message.type && (
+        <div className={`login-message login-message-${message.type}`}>
+          <span className="login-message-icon">
+            {message.type === 'success' ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            )}
+          </span>
+          <span className="login-message-text">{message.text}</span>
+          <button 
+            className="login-message-close"
+            onClick={() => setMessage({ type: null, text: '' })}
+            aria-label="Close message"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      )}
       
       <h1 className="login-title">Log In</h1>
       
@@ -61,13 +156,6 @@ const LoginPage = () => {
             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
           </svg>
           <span>Log in with Google</span>
-        </button>
-
-        <button className="login-btn login-facebook">
-          <svg className="facebook-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-          </svg>
-          <span>Log in with Facebook</span>
         </button>
 
         <div className="divider">
@@ -113,8 +201,8 @@ const LoginPage = () => {
               />
             </div>
 
-            <button type="submit" className="login-btn login-submit">
-              <span>Log In</span>
+            <button type="submit" className="login-btn login-submit" disabled={isLoading}>
+              <span>{isLoading ? 'Logging in...' : 'Log In'}</span>
             </button>
 
             <button

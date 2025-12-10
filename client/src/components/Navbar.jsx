@@ -156,8 +156,20 @@ const Navbar = () => {
             {authenticated && user ? (
               <div className="user-menu">
                 <div className="user-info">
-                  {user.picture && (
-                    <img src={user.picture} alt={user.name} className="user-avatar" />
+                  {user.picture ? (
+                    <img 
+                      src={user.picture} 
+                      alt={user.name} 
+                      className="user-avatar"
+                      onError={(e) => {
+                        // If image fails to load, hide it or show a fallback
+                        e.target.style.display = 'none'
+                      }}
+                    />
+                  ) : (
+                    <div className="user-avatar-fallback">
+                      {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                    </div>
                   )}
                   <span className="user-name">{user.name}</span>
                 </div>

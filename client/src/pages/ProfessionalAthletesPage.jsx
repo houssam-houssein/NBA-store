@@ -19,19 +19,27 @@ const ProfessionalAthletesPage = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true)
-        const response = await fetch(`${API_URL}/api/categories`)
-        if (!response.ok) throw new Error('Failed to fetch categories')
+        // Use optimized endpoint to fetch only the needed category
+        const response = await fetch(`${API_URL}/api/categories/key/professionalAthletes`)
+        if (!response.ok) {
+          if (response.status === 404) {
+            // Category doesn't exist yet, set empty products
+            setProducts([])
+            return
+          }
+          throw new Error('Failed to fetch category')
+        }
         
-        const categories = await response.json()
-        const professionalCategory = categories.find(cat => 
-          cat.key && cat.key.toLowerCase() === 'professionalathletes'
-        )
+        const category = await response.json()
         
-        if (professionalCategory && professionalCategory.products) {
-          setProducts(professionalCategory.products.filter(p => p != null))
+        if (category && category.products) {
+          setProducts(category.products.filter(p => p != null))
+        } else {
+          setProducts([])
         }
       } catch (error) {
         console.error('Failed to load professional athletes products:', error)
+        setProducts([])
       } finally {
         setLoading(false)
       }
@@ -107,7 +115,9 @@ const ProfessionalAthletesPage = () => {
 
       {loading ? (
         <section className="loading-section">
+          <div className="loading-spinner"></div>
           <p>Loading products...</p>
+          <p className="loading-hint">First connection may take a moment</p>
         </section>
       ) : products.length === 0 ? (
         <section className="coming-soon-section" aria-label="Coming soon">

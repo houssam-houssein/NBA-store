@@ -56,17 +56,13 @@ const initialCatalog = {
   ],
   highSchoolAthletes: [
     { id: 'hs-1', name: 'Northshore Champions Jersey', price: '$85.00', inventory: 0, status: 'Coming Soon' }
-  ],
-  teamwear: [
-    { id: 'team-1', name: 'AAU Elite Pack', price: 'Quote Only', inventory: '-', status: 'Custom' }
   ]
 }
 
 const categoryLabels = {
   professionalAthletes: 'Professional Athletes',
   influencers: 'Influencers',
-  highSchoolAthletes: 'High School Athletes',
-  teamwear: 'Teamwear'
+  highSchoolAthletes: 'High School Athletes'
 }
 
 const statusOptions = ['Pending', 'Processing', 'Completed', 'Cancelled']
@@ -95,45 +91,65 @@ const AdminDashboardPage = () => {
   const [loadingInquiries, setLoadingInquiries] = useState(true)
 
   useEffect(() => {
-    const isAdminAuthenticated = localStorage.getItem('isAdminAuthenticated') === 'true'
-    if (!isAdminAuthenticated) {
-      navigate('/admin-login', { replace: true })
-    }
+    // Small delay to ensure localStorage is set after login redirect
+    const checkAuth = setTimeout(() => {
+      const isAdminAuthenticated = localStorage.getItem('isAdminAuthenticated') === 'true'
+      if (!isAdminAuthenticated) {
+        navigate('/admin-login', { replace: true })
+      }
+    }, 100)
+    
+    return () => clearTimeout(checkAuth)
   }, [navigate])
 
   const fetchCategories = useCallback(async () => {
     try {
       setLoadingCategories(true)
       const response = await fetch(`${API_URL}/api/categories`)
-      if (!response.ok) throw new Error('Failed to load categories')
+      if (!response.ok) {
+        throw new Error(`Failed to load categories: ${response.status}`)
+      }
 
       const categories = await response.json()
+      
+      if (!Array.isArray(categories)) {
+        console.warn('Categories response is not an array:', categories)
+        setServerCategories([])
+        return
+      }
+
       setServerCategories(categories)
 
       const mapped = {
         professionalAthletes: [],
         influencers: [],
-        highSchoolAthletes: [],
-        teamwear: []
+        highSchoolAthletes: []
       }
 
       categories.forEach(category => {
+        if (!category || !category.key) return
         const key = category.key
-        mapped[key] = (category.products || []).map(product => ({
-          ...product,
-          id: product._id,
-          name: product.title,
-          price: typeof product.price === 'number' ? `$${product.price.toFixed(2)}` : product.price,
-          status: formatStatusLabel(product.status),
-          imageUrl: product.imageUrl || '',
-          description: product.description || '',
-          isNew: false
-        }))
+        // Skip teamwear collection - only show inquiries
+        if (key === 'teamwear') return
+        if (mapped.hasOwnProperty(key)) {
+          mapped[key] = (category.products || []).map(product => ({
+            ...product,
+            id: product._id || product.id,
+            name: product.title || product.name || '',
+            price: typeof product.price === 'number' ? `$${product.price.toFixed(2)}` : (product.price || ''),
+            status: formatStatusLabel(product.status),
+            imageUrl: product.imageUrl || '',
+            description: product.description || '',
+            isNew: false
+          }))
+        }
       })
 
       setCatalog(mapped)
     } catch (error) {
       console.error('Failed to fetch categories:', error)
+      setServerCategories([])
+      // Don't crash the page, just show empty catalog
     } finally {
       setLoadingCategories(false)
     }
@@ -147,11 +163,15 @@ const AdminDashboardPage = () => {
     try {
       setLoadingInquiries(true)
       const response = await fetch(`${API_URL}/api/teamwear-inquiries`)
-      if (!response.ok) throw new Error('Failed to load inquiries')
+      if (!response.ok) {
+        throw new Error(`Failed to load inquiries: ${response.status}`)
+      }
       const data = await response.json()
-      setTeamwearInquiries(data)
+      setTeamwearInquiries(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error('Failed to fetch teamwear inquiries:', error)
+      setTeamwearInquiries([])
+      // Don't crash the page, just show empty inquiries
     } finally {
       setLoadingInquiries(false)
     }

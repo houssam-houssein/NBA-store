@@ -19,19 +19,26 @@ const InfluencersPage = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true)
-        const response = await fetch(`${API_URL}/api/categories`)
-        if (!response.ok) throw new Error('Failed to fetch categories')
+        // Use optimized endpoint to fetch only the needed category
+        const response = await fetch(`${API_URL}/api/categories/key/influencers`)
+        if (!response.ok) {
+          if (response.status === 404) {
+            setProducts([])
+            return
+          }
+          throw new Error('Failed to fetch category')
+        }
         
-        const categories = await response.json()
-        const influencersCategory = categories.find(cat => 
-          cat.key && cat.key.toLowerCase() === 'influencers'
-        )
+        const category = await response.json()
         
-        if (influencersCategory && influencersCategory.products) {
-          setProducts(influencersCategory.products.filter(p => p != null))
+        if (category && category.products) {
+          setProducts(category.products.filter(p => p != null))
+        } else {
+          setProducts([])
         }
       } catch (error) {
         console.error('Failed to load influencers products:', error)
+        setProducts([])
       } finally {
         setLoading(false)
       }
@@ -107,7 +114,9 @@ const InfluencersPage = () => {
 
       {loading ? (
         <section className="loading-section">
+          <div className="loading-spinner"></div>
           <p>Loading products...</p>
+          <p className="loading-hint">First connection may take a moment</p>
         </section>
       ) : products.length === 0 ? (
         <section className="coming-soon-section" aria-label="Coming soon">

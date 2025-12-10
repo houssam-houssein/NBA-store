@@ -44,6 +44,84 @@
   height: 24px;
 }
 
+.signup-message {
+  position: fixed;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1002;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: slideDownMessage 0.3s ease;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+@keyframes slideDownMessage {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.signup-message-success {
+  background-color: #00ff00;
+  color: #000000;
+  border: 2px solid #00cc00;
+}
+
+.signup-message-error {
+  background-color: #ff4444;
+  color: #ffffff;
+  border: 2px solid #cc0000;
+}
+
+.signup-message-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.signup-message-text {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.signup-message-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.signup-message-close:hover {
+  opacity: 1;
+}
+
+.signup-message-close svg {
+  width: 16px;
+  height: 16px;
+}
+
 .signup-title {
   font-size: 48px;
   font-weight: bold;
@@ -105,11 +183,6 @@
 .signup-google {
   background-color: #ffffff;
   color: #000000;
-}
-
-.signup-facebook {
-  background-color: #1877F2;
-  color: #ffffff;
 }
 
 .signup-email {
@@ -188,10 +261,6 @@
 }
 
 .google-icon {
-  flex-shrink: 0;
-}
-
-.facebook-icon {
   flex-shrink: 0;
 }
 
@@ -282,6 +351,13 @@
     top: 90px;
     right: 30px;
   }
+
+  .signup-message {
+    top: 100px;
+    padding: 14px 18px;
+    font-size: 14px;
+    max-width: 85%;
+  }
   
   .signup-title {
     font-size: 42px;
@@ -307,6 +383,19 @@
     right: 20px;
     width: 36px;
     height: 36px;
+  }
+
+  .signup-message {
+    top: 90px;
+    padding: 12px 16px;
+    font-size: 14px;
+    gap: 10px;
+    max-width: 90%;
+  }
+
+  .signup-message-icon svg {
+    width: 18px;
+    height: 18px;
   }
 
   .close-button svg {
@@ -363,6 +452,24 @@
     right: 15px;
     width: 32px;
     height: 32px;
+  }
+
+  .signup-message {
+    top: 80px;
+    padding: 12px 14px;
+    font-size: 13px;
+    gap: 8px;
+    max-width: 92%;
+  }
+
+  .signup-message-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .signup-message-close svg {
+    width: 14px;
+    height: 14px;
   }
 
   .close-button svg {

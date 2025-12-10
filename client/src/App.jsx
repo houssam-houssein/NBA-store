@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
 import { AuthProvider } from './context/AuthContext'
+import ErrorBoundary from './components/ErrorBoundary'
 import Navbar from './components/Navbar'
 import HomePage from './pages/HomePage'
 import ShippingReturnsPage from './pages/ShippingReturnsPage'
@@ -20,39 +21,64 @@ import './App.css'
 // If deployed at username.github.io/repo-name, extract repo-name
 // If deployed at username.github.io (root), use '/'
 function getBasename() {
-  const path = window.location.pathname
-  
-  // Debug logging
-  console.log('Current pathname:', path)
-  
-  // For GitHub Pages: /repo-name/ -> /repo-name
-  // Check for jersey-lab specifically first
-  if (path.startsWith('/jersey-lab/') || path === '/jersey-lab' || path.startsWith('/jersey-lab')) {
-    console.log('Detected jersey-lab repo, using basename: /jersey-lab')
-    return '/jersey-lab'
+  try {
+    const path = window.location.pathname
+    const hostname = window.location.hostname
+    const search = window.location.search
+    
+    // Debug logging (only in development)
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Current pathname:', path)
+      console.log('Current hostname:', hostname)
+      console.log('Current search:', search)
+    }
+    
+    // On localhost, always use root basename
+    if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname.startsWith('192.168.') || hostname.startsWith('10.') || hostname.startsWith('172.')) {
+      return '/'
+    }
+    
+    // Check if we're on GitHub Pages (github.io domain)
+    const isGitHubPages = hostname.includes('github.io')
+    
+    // For GitHub Pages: /repo-name/ -> /repo-name
+    // Check for jersey-lab specifically first
+    if (path.startsWith('/jersey-lab/') || path === '/jersey-lab') {
+      return '/jersey-lab'
+    }
+    
+    // Backward compatibility checks
+    if (path.startsWith('/NBA-store/') || path === '/NBA-store') {
+      return '/NBA-store'
+    }
+    
+    if (path.startsWith('/NBA/') || path === '/NBA') {
+      return '/NBA'
+    }
+    
+    // If on GitHub Pages, try to extract repo name from path
+    if (isGitHubPages) {
+      const pathMatch = path.match(/^\/([^\/]+)/)
+      if (pathMatch && pathMatch[1]) {
+        const repoName = pathMatch[1]
+        // Common routes to exclude from basename detection
+        const excludedRoutes = ['admin', 'admin-login', 'login', 'signup', 'cart', 'teamwear', 
+          'professional-athletes', 'influencers', 'high-school-athletes', 
+          'shipping-returns', 'terms-conditions', 'assets', 'static', 'index.html']
+        
+        if (!excludedRoutes.includes(repoName) && repoName !== '') {
+          return `/${repoName}`
+        }
+      }
+    }
+    
+    // Default to root
+    return '/'
+  } catch (error) {
+    console.error('Error in getBasename:', error)
+    // Fallback to root on error
+    return '/'
   }
-  
-  // Backward compatibility checks
-  if (path.startsWith('/NBA-store/') || path === '/NBA-store' || path.startsWith('/NBA-store')) {
-    console.log('Detected NBA-store repo, using basename: /NBA-store')
-    return '/NBA-store'
-  }
-  
-  if (path.startsWith('/NBA/') || path === '/NBA' || path.startsWith('/NBA')) {
-    console.log('Detected NBA repo, using basename: /NBA')
-    return '/NBA'
-  }
-  
-  // Extract repo name from path (e.g., /repo-name/ -> /repo-name)
-  const pathMatch = path.match(/^\/([^\/]+)/)
-  if (pathMatch && pathMatch[1] && pathMatch[1] !== 'assets' && pathMatch[1] !== 'static' && pathMatch[1] !== '') {
-    console.log('Detected repo:', pathMatch[1], 'using basename:', `/${pathMatch[1]}`)
-    return `/${pathMatch[1]}`
-  }
-  
-  // Default to root
-  console.log('Using default basename: /')
-  return '/'
 }
 
 const AppContent = () => {
@@ -82,13 +108,15 @@ const AppContent = () => {
 
 function App() {
   return (
-    <AuthProvider>
-      <CartProvider>
-        <Router basename={getBasename()}>
-          <AppContent />
-        </Router>
-      </CartProvider>
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider>
+        <CartProvider>
+          <Router basename={getBasename()}>
+            <AppContent />
+          </Router>
+        </CartProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   )
 }
 

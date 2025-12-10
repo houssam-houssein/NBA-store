@@ -21,5 +21,9 @@ const categorySchema = new mongoose.Schema({
   products: [productSchema]
 }, { timestamps: true })
 
+// Index for faster lookups by key
+categorySchema.index({ key: 1 })
+categorySchema.index({ status: 1 })
+
 const Category = mongoose.model('Category', categorySchema)
 export default Category
