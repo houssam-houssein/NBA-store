@@ -399,6 +399,7 @@
   border: 0 solid transparent;
   transition: border-color 0.3s ease;
   box-sizing: border-box;
+  margin-bottom: 0;
 }
 
 .tw-background-section::before {
@@ -707,6 +708,7 @@
   padding: 100px 40px;
   overflow-x: hidden;
   box-sizing: border-box;
+  margin-top: 0;
 }
 
 .about-us-section::before {

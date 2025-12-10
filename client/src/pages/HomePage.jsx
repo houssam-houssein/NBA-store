@@ -134,26 +134,6 @@ const HomePage = () => {
         </div>
       </div>
       
-      {/* Shop Section */}
-      <div className="shop-section">
-        <div className="shop-grid">
-          <div className="section-with-shop">
-            <Link to="/teamwear" id="teamwear" className="shop-category teamwear">
-              <h2 className="category-title">TEAMWEAR</h2>
-              <p className="category-description">
-                Design custom uniforms for your squad and submit your teamwear request.
-              </p>
-            </Link>
-            <Link to="/teamwear" className="shop-now-right-teamwear desktop-shop-now">
-              Start Your Order
-            </Link>
-            <Link to="/teamwear" className="shop-now-right-teamwear mobile-shop-now">
-              Start Your Order
-            </Link>
-          </div>
-        </div>
-      </div>
-      
       {/* About Us Section - Full Width */}
       <div 
         id="about-us" 
