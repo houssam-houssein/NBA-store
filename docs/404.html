@@ -26,28 +26,28 @@
       
       // Prevent infinite loop: if we're already in query string format, don't redirect again
       if (l.search && l.search.length > 1 && l.search[1] === '/') {
+        // Already redirected, let the app handle it
         return;
       }
       
       // Get the path segments
       var pathSegments = l.pathname.split('/').filter(function(segment) {
-        return segment !== '';
+        return segment !== '' && segment !== 'index.html';
       });
       
-      // If we're at the root (only repo name), don't redirect
-      if (pathSegments.length <= pathSegmentsToKeep && !l.search) {
-        // Check if we're actually at index.html
-        if (pathSegments.length === pathSegmentsToKeep) {
-          return;
-        }
+      // If we're at the root (only repo name or repo name + index.html), don't redirect
+      if (pathSegments.length <= pathSegmentsToKeep) {
+        return;
       }
       
       // Build the redirect URL
-      var basePath = l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/');
-      var remainingPath = l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/');
+      // Get base path (e.g., /NBA-store)
+      var basePath = '/' + pathSegments.slice(0, pathSegmentsToKeep).join('/');
+      // Get remaining path (e.g., admin, admin-login, etc.)
+      var remainingPath = pathSegments.slice(pathSegmentsToKeep).join('/');
       
       // Only redirect if there's a remaining path
-      if (remainingPath) {
+      if (remainingPath && remainingPath !== 'index.html') {
         var redirectUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
           basePath + '/?/' +
           remainingPath.replace(/&/g, '~and~') +
