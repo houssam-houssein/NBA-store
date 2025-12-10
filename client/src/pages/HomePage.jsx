@@ -7,6 +7,7 @@ import logoPoster from '../assets/images/logo-poster.png'
 import aboutBg from '../assets/images/about-bg.png'
 import paBg from '../assets/images/pa.png'
 import iBg from '../assets/images/i.png'
+import haBg from '../assets/images/ha.jpg'
 import './HomePage.css'
 
 const HomePage = () => {
@@ -83,6 +84,28 @@ const HomePage = () => {
             </Link>
           </div>
           <Link to="/influencers" className="influencers-shop-now-right">
+            Shop Now
+          </Link>
+        </div>
+      </div>
+      
+      {/* High School Athletes Background Section */}
+      <div 
+        className="ha-background-section"
+        style={{ backgroundImage: `url(${haBg})` }}
+      >
+        <div className="ha-content-wrapper">
+          <div className="ha-text-content">
+            <Link 
+              to="/high-school-athletes" 
+              id="high-school-athletes" 
+              className="ha-category-link"
+            >
+              <h2 className="ha-category-title">HIGH SCHOOL ATHLETES</h2>
+              <p className="ha-category-description">Browse your favorite High School star</p>
+            </Link>
+          </div>
+          <Link to="/high-school-athletes" className="ha-shop-now-right">
             Shop Now
           </Link>
         </div>
