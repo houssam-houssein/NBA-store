@@ -52,11 +52,15 @@ app.use(session({
   }
 }))
 
-// Mongo connection
-mongoose.connect(MONGODB_URI).then(() => {
-  console.log('Connected to MongoDB')
+// Mongo connection with Atlas-optimized options
+mongoose.connect(MONGODB_URI, {
+  retryWrites: true,
+  w: 'majority'
+}).then(() => {
+  console.log('Connected to MongoDB Atlas')
 }).catch((error) => {
   console.error('MongoDB connection error:', error)
+  process.exit(1)
 })
 
 // Initialize Passport

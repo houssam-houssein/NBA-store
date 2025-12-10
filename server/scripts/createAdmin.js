@@ -23,7 +23,10 @@ async function createAdmin() {
     const password = await question('Admin password: ')
     const name = await question('Admin name (optional): ')
 
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/Jerseylab')
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/Jerseylab', {
+      retryWrites: true,
+      w: 'majority'
+    })
 
     const existing = await Admin.findOne({ email })
     if (existing) {

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:github": "cross-env BUILD_TO_DOCS=true VITE_BASE_PATH=/NBA-store/ vite build",
+    "build:github": "cross-env BUILD_TO_DOCS=true VITE_BASE_PATH=/jersey-lab/ vite build",
     "preview": "vite preview"
   },
   "dependencies": {

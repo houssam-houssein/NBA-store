@@ -11,7 +11,10 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
 async function listAdmins() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/Jerseylab')
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/Jerseylab', {
+      retryWrites: true,
+      w: 'majority'
+    })
     const admins = await Admin.find({}, { email: 1, name: 1, role: 1, createdAt: 1 })
     console.log('Admins:', admins)
     process.exit(0)

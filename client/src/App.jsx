@@ -26,13 +26,18 @@ function getBasename() {
   console.log('Current pathname:', path)
   
   // For GitHub Pages: /repo-name/ -> /repo-name
-  // Check for NBA-store specifically first
+  // Check for jersey-lab specifically first
+  if (path.startsWith('/jersey-lab/') || path === '/jersey-lab' || path.startsWith('/jersey-lab')) {
+    console.log('Detected jersey-lab repo, using basename: /jersey-lab')
+    return '/jersey-lab'
+  }
+  
+  // Backward compatibility checks
   if (path.startsWith('/NBA-store/') || path === '/NBA-store' || path.startsWith('/NBA-store')) {
     console.log('Detected NBA-store repo, using basename: /NBA-store')
     return '/NBA-store'
   }
   
-  // Also check for NBA (backward compatibility)
   if (path.startsWith('/NBA/') || path === '/NBA' || path.startsWith('/NBA')) {
     console.log('Detected NBA repo, using basename: /NBA')
     return '/NBA'

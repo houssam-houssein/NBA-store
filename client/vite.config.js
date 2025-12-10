@@ -9,13 +9,13 @@ const __dirname = path.dirname(__filename)
 
 // Get the base path from environment variable
 // For localhost development, use '/' (no base path)
-// For GitHub Pages production, use '/NBA-store/'
-// Set VITE_BASE_PATH=/NBA-store/ when building for production
+// For GitHub Pages production, use '/jersey-lab/'
+// Set VITE_BASE_PATH=/jersey-lab/ when building for production
 // Use command 'mode' to detect dev vs build
 export default defineConfig(({ command, mode }) => {
   // In dev mode (command === 'serve'), always use '/'
-  // In build mode, use '/NBA-store/' unless VITE_BASE_PATH is set
-  const base = process.env.VITE_BASE_PATH || (command === 'serve' ? '/' : '/NBA-store/')
+  // In build mode, use '/jersey-lab/' unless VITE_BASE_PATH is set
+  const base = process.env.VITE_BASE_PATH || (command === 'serve' ? '/' : '/jersey-lab/')
   
   return {
 

@@ -21,13 +21,21 @@ This guide will help you set up Google OAuth authentication for the Jerzey Lab a
 6. Create OAuth Client ID:
    - Application type: **Web application**
    - Name: **Jerzey Lab OAuth Client**
-   - Authorized JavaScript origins:
-     - `http://localhost:5173` (for development)
-     - `http://localhost:5000` (for backend)
-     - Your production domain (e.g., `https://yourdomain.com`)
-   - Authorized redirect URIs:
-     - `http://localhost:5000/api/auth/google/callback` (for development)
-     - Your production callback URL (e.g., `https://yourdomain.com/api/auth/google/callback`)
+   - **Authorized JavaScript origins** (where your frontend is hosted):
+     - **IMPORTANT**: Only use the base domain, NO paths, NO trailing slashes
+     - `http://localhost:5173` (for local development - no trailing slash)
+     - `https://houssam-houssein.github.io` (your GitHub Pages base URL - NO `/jersey-lab` path)
+     - **Do NOT include**: `/jersey-lab` or any other path
+     - **Do NOT include**: Trailing slashes like `/`
+     - Examples of what NOT to use:
+       - ❌ `https://houssam-houssein.github.io/jersey-lab`
+       - ❌ `https://houssam-houssein.github.io/`
+       - ❌ `http://localhost:5173/`
+   - **Authorized redirect URIs** (where your backend server is hosted - NOT GitHub Pages):
+     - `http://localhost:5000/api/auth/google/callback` (for local development)
+     - `https://your-backend-server.com/api/auth/google/callback` (your production backend URL)
+     - **Important**: This must point to your Node.js backend server, NOT GitHub Pages
+     - GitHub Pages only serves static files, so your backend must be hosted separately (Railway, Render, Heroku, etc.)
 7. Click **Create**
 8. Copy the **Client ID** and **Client Secret**
 
@@ -100,17 +108,28 @@ VITE_API_URL=http://localhost:5000
 
 For production deployment:
 
-1. Update the `.env` file with production values:
-   - `CLIENT_URL`: Your production frontend URL
-   - `GOOGLE_CALLBACK_URL`: Your production backend callback URL
+1. **Host your backend server** (required - GitHub Pages can't run Node.js):
+   - Options: Railway, Render, Heroku, Vercel (serverless), DigitalOcean, etc.
+   - Your backend must be accessible via HTTPS
+   - Example backend URL: `https://nba-store-api.railway.app` or `https://api.yourdomain.com`
+
+2. Update the `.env` file on your backend server with production values:
+   - `CLIENT_URL`: Your GitHub Pages frontend URL (e.g., `https://houssam-houssein.github.io/jersey-lab`)
+   - `GOOGLE_CALLBACK_URL`: Your production backend callback URL (e.g., `https://your-backend.railway.app/api/auth/google/callback`)
    - `NODE_ENV=production`
    - `SESSION_SECRET`: Use a strong, randomly generated secret
 
-2. Update Google OAuth credentials:
-   - Add your production domain to **Authorized JavaScript origins**
-   - Add your production callback URL to **Authorized redirect URIs**
+3. Update Google OAuth credentials in Google Cloud Console:
+   - **Authorized JavaScript origins**: 
+     - Add your GitHub Pages base URL (e.g., `https://houssam-houssein.github.io`)
+     - **NO paths, NO trailing slashes** - just the base domain
+     - ❌ Wrong: `https://houssam-houssein.github.io/jersey-lab`
+     - ✅ Correct: `https://houssam-houssein.github.io`
+   - **Authorized redirect URIs**: 
+     - Add your backend server callback URL (e.g., `https://your-backend.railway.app/api/auth/google/callback`)
+     - **Important**: The redirect URI must point to your backend server, NOT GitHub Pages
 
-3. Ensure your backend server is accessible at the callback URL
+4. Ensure your backend server is accessible and the callback endpoint works
 
 ## Troubleshooting
 

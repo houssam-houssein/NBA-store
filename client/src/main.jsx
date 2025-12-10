@@ -12,12 +12,14 @@ import './index.css'
       return s.replace(/~and~/g, '&')
     }).join('?');
     
-    // Detect base path - check for NBA-store first
-    var basePath = '/NBA-store/'
-    if (l.pathname.startsWith('/NBA-store/')) {
-      basePath = '/NBA-store/'
+    // Detect base path - check for jersey-lab first
+    var basePath = '/jersey-lab/'
+    if (l.pathname.startsWith('/jersey-lab/')) {
+      basePath = '/jersey-lab/'
+    } else if (l.pathname.startsWith('/NBA-store/')) {
+      basePath = '/NBA-store/' // Backward compatibility
     } else if (l.pathname.startsWith('/NBA/')) {
-      basePath = '/NBA/'
+      basePath = '/NBA/' // Backward compatibility
     } else {
       // Try to extract from pathname
       var match = l.pathname.match(/^(\/[^\/]+\/)/)

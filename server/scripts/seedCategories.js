@@ -59,7 +59,10 @@ const seedData = [
 
 async function seedCategories() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/Jerseylab')
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/Jerseylab', {
+      retryWrites: true,
+      w: 'majority'
+    })
     for (const cat of seedData) {
       await Category.findOneAndUpdate(
         { key: cat.key },

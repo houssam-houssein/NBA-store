@@ -19,7 +19,7 @@
       // then set segmentCount to 1 (enterprise users may need to set it to > 1).
       // This way the code will only replace the route part and not the real directory.
       // For example, '/repo-name/' will be replaced with '/?/repo-name/'
-      // For NBA-store repo, we keep 1 segment (the repo name)
+      // For jersey-lab repo, we keep 1 segment (the repo name)
       var pathSegmentsToKeep = 1;
 
       var l = window.location;
@@ -41,7 +41,7 @@
       }
       
       // Build the redirect URL
-      // Get base path (e.g., /NBA-store)
+      // Get base path (e.g., /jersey-lab)
       var basePath = '/' + pathSegments.slice(0, pathSegmentsToKeep).join('/');
       // Get remaining path (e.g., admin, admin-login, etc.)
       var remainingPath = pathSegments.slice(pathSegmentsToKeep).join('/');
