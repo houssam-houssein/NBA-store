@@ -227,9 +227,9 @@ const ProfessionalAthletesPage = () => {
       )}
 
       <section className="support-section">
-        <h3 className="support-title">Need a custom order?</h3>
+        <h3 className="support-title">Let's Collaborate</h3>
         <p className="support-copy">
-          Contact our concierge team for player-signed memorabilia, bulk orders, or jersey personalization.
+          Partner with us to create exclusive jerseys, limited editions, or custom collections. Let's bring your vision to life and celebrate your legacy together.
         </p>
         <a className="support-link" href="mailto:info@jerseylab.com">
           info@jerseylab.com
