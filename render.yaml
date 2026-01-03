@@ -31,14 +31,10 @@ services:
       - key: EMAIL_PASS
         sync: false  # Set this in Render dashboard if using email
 
-  # Frontend Static Site
-  - type: static_site
-    name: jerzey-lab-client
-    region: oregon
-    plan: free
-    buildCommand: cd client && npm install && npm run build
-    staticPublishPath: client/dist
-    envVars:
-      - key: VITE_API_URL
-        sync: false  # Set this to your backend URL (e.g., https://jerzey-lab-api.onrender.com)
+# Note: Static sites must be created manually in Render Dashboard
+# Go to: New > Static Site
+# Configure:
+#   - Build Command: cd client && npm install && npm run build
+#   - Publish Directory: client/dist
+#   - Environment Variable: VITE_API_URL = https://jerzey-lab-api.onrender.com
 
