@@ -92,7 +92,7 @@ const TermsConditionsPage = () => {
         <section className="terms-section">
           <h2 className="section-title">9. Governing Law</h2>
           <p className="terms-paragraph">
-            These Terms and Conditions shall be governed by and construed in accordance with the laws of the United States. Any disputes shall be handled in the appropriate courts within the U.S.
+            These Terms and Conditions shall be governed by and construed in accordance with the laws of the State of California. Any disputes shall be handled in the appropriate courts within the State of California.
           </p>
         </section>
 
