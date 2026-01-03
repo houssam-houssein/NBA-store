@@ -30,6 +30,7 @@ const Footer = () => {
             <h3 className="footer-title">CONTACT</h3>
             <ul className="footer-links">
               <li><a href="mailto:info@jerseylab.com">info@jerseylab.com</a></li>
+              <li><a href="mailto:sales@jerseylab.com">sales@jerseylab.com</a></li>
             </ul>
           </div>
         </div>
