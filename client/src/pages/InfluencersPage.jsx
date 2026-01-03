@@ -228,7 +228,7 @@ const InfluencersPage = () => {
       <section className="collab-section">
         <h3 className="collab-title">Creators - let's build together</h3>
         <p className="collab-copy">
-          Pitch your concept, launch drop-ready merch, and tap into the Jerzey LAB production network.
+          Pitch your concept, launch drop-ready merch, and tap into the JerseyLab production network.
         </p>
         <a className="collab-link" href="mailto:info@jerseylab.com">
           info@jerseylab.com

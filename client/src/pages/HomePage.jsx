@@ -41,8 +41,8 @@ const HomePage = () => {
       <div className="homepage-content">
         {/* Main Poster */}
         <div className="main-logo">
-          <img src={bgPoster} alt="Jerzey LAB Background" className="main-poster-bg" />
-          <img src={logoPoster} alt="Jerzey LAB Logo" className="main-poster-logo" />
+          <img src={bgPoster} alt="JerseyLab Background" className="main-poster-bg" />
+          <img src={logoPoster} alt="JerseyLab Logo" className="main-poster-logo" />
         </div>
       </div>
       
@@ -147,10 +147,10 @@ const HomePage = () => {
         style={{ backgroundImage: `url(${aboutBg})` }}
       >
         <div className="about-us-content">
-          <h2 className="about-us-title">JerzeyLab</h2>
+          <h2 className="about-us-title">JerseyLab</h2>
           <div className="about-us-text">
             <p className="about-us-paragraph">
-              At Jerzey Lab, we believe jerseys are more than fabric. They're living stories of the game. Every player, from professional athletes to high school stars and basketball influencers, carries a legacy that deserves to be celebrated.
+              At JerseyLab, we believe jerseys are more than fabric. They're living stories of the game. Every player, from professional athletes to high school stars and basketball influencers, carries a legacy that deserves to be celebrated.
             </p>
             <p className="about-us-paragraph">
               That's why we partner directly with players to design and release authentic, licensed jerseys. Each piece is backed by signed agreements, ensuring that what you wear is legit, respectful, and true to the player's journey. From the teams they've represented to the years they've shined, every jersey captures a chapter of basketball history.
@@ -164,7 +164,7 @@ const HomePage = () => {
               <li>Celebrate the culture of basketball at every level — pro, local, and digital</li>
             </ul>
             <p className="about-us-paragraph">
-              Jerzey Lab isn't just a store. It's a movement where fans, players, and communities come together to keep the spirit of the game alive.
+              JerseyLab isn't just a store. It's a movement where fans, players, and communities come together to keep the spirit of the game alive.
             </p>
           </div>
         </div>

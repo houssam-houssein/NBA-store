@@ -8,7 +8,7 @@ const TermsConditionsPage = () => {
 
       <div className="terms-content">
         <p className="intro-paragraph">
-          Welcome to Jerzey Lab. By accessing or purchasing from our website, you agree to the following Terms and Conditions. Please read them carefully before placing an order.
+          Welcome to JerseyLab. By accessing or purchasing from our website, you agree to the following Terms and Conditions. Please read them carefully before placing an order.
         </p>
 
         <section className="terms-section">
@@ -78,7 +78,7 @@ const TermsConditionsPage = () => {
         <section className="terms-section">
           <h2 className="section-title">7. Intellectual Property</h2>
           <p className="terms-paragraph">
-            All designs, logos, product images, and website content are the intellectual property of Jerzey Lab and are protected by applicable copyright and trademark laws. Unauthorized use is strictly prohibited.
+            All designs, logos, product images, and website content are the intellectual property of JerseyLab and are protected by applicable copyright and trademark laws. Unauthorized use is strictly prohibited.
           </p>
         </section>
 

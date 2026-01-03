@@ -674,7 +674,7 @@ app.post('/api/admin/admins', async (req, res) => {
     const admin = await Admin.create({
       email: email.toLowerCase().trim(),
       password,
-      name: name || 'Jerzey Lab Owner',
+      name: name || 'JerseyLab Owner',
       role: role || 'owner'
     })
 

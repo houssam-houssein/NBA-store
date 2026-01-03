@@ -37,7 +37,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p className="footer-copyright">
-            © {new Date().getFullYear()} Jerzey Lab. All rights reserved.
+            © {new Date().getFullYear()} JerseyLab. All rights reserved.
           </p>
         </div>
       </div>

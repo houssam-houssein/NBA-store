@@ -37,7 +37,7 @@ async function createAdmin() {
     const admin = await Admin.create({
       email,
       password,
-      name: name || 'Jerzey Lab Owner'
+      name: name || 'JerseyLab Owner'
     })
 
     console.log('Admin created:', { email: admin.email, name: admin.name })

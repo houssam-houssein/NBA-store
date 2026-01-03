@@ -748,7 +748,7 @@ const AdminDashboardPage = () => {
                     type='text'
                     value={adminForm.name}
                     onChange={(e) => setAdminForm({ ...adminForm, name: e.target.value })}
-                    placeholder='Jerzey Lab Owner'
+                    placeholder='JerseyLab Owner'
                   />
                 </div>
               </div>
@@ -1254,7 +1254,7 @@ const AdminDashboardPage = () => {
     <div className='admin-dashboard'>
       <nav className='admin-top-nav'>
         <div className='admin-brand'>
-          <img src={adminLogo} alt='Jerzey Lab' className='brand-logo' />
+          <img src={adminLogo} alt='JerseyLab' className='brand-logo' />
         </div>
         <div className='admin-header-actions'>
           <button className='primary-button' onClick={() => alert('Future: generate latest performance PDF')}>
@@ -1328,7 +1328,7 @@ const AdminDashboardPage = () => {
           <header className='admin-header'>
             <div>
               <p className='eyebrow'>INTERNAL ACCESS</p>
-              <h1>Jerzey Lab Admin</h1>
+              <h1>JerseyLab Admin</h1>
               <p className='subheading'>Control the drop. Manage jerseys, monitor orders, and keep the culture moving.</p>
             </div>
           </header>

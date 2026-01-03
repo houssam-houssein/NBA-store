@@ -228,7 +228,7 @@ const HighSchoolAthletesPage = () => {
       <section className="programs-section">
         <h3 className="programs-title">High school athletes - let's feature your program</h3>
         <p className="programs-copy">
-          Launch team stores, fundraise with specialty merch, and unlock pro-grade production with Jerzey LAB.
+          Launch team stores, fundraise with specialty merch, and unlock pro-grade production with JerseyLab.
         </p>
         <a className="programs-link" href="mailto:info@jerseylab.com">
           info@jerseylab.com

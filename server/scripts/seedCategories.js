@@ -51,7 +51,7 @@ const seedData = [
   {
     key: 'teamwear',
     title: 'Teamwear',
-    description: 'Custom team kits built with the Jerzey Lab studio.',
+    description: 'Custom team kits built with the JerseyLab studio.',
     status: 'active',
     products: []
   }

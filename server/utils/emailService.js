@@ -50,9 +50,9 @@ const transporter = createTransporter()
 export const sendWelcomeEmail = async (userEmail, userName) => {
   try {
     const mailOptions = {
-      from: process.env.EMAIL_FROM || `"Jerzey LAB" <${process.env.EMAIL_USER || 'noreply@jerzeylab.com'}>`,
+      from: process.env.EMAIL_FROM || `"JerseyLab" <${process.env.EMAIL_USER || 'noreply@jerzeylab.com'}>`,
       to: userEmail,
-      subject: 'Welcome to Jerzey LAB! 🏀',
+      subject: 'Welcome to JerseyLab! 🏀',
       html: `
         <!DOCTYPE html>
         <html>
@@ -111,12 +111,12 @@ export const sendWelcomeEmail = async (userEmail, userName) => {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">JERZEY LAB</div>
+              <div class="logo">JerseyLab</div>
             </div>
             <div class="content">
-              <h2>Welcome to Jerzey LAB, ${userName}! 🏀</h2>
+              <h2>Welcome to JerseyLab, ${userName}! 🏀</h2>
               <p>Thank you for joining our community of athletes, influencers, and basketball enthusiasts.</p>
-              <p>We're excited to have you on board! At Jerzey LAB, we create premium athletic wear that represents the culture and passion of the game.</p>
+              <p>We're excited to have you on board! At JerseyLab, we create premium athletic wear that represents the culture and passion of the game.</p>
               <p>Here's what you can do next:</p>
               <ul>
                 <li>Browse our exclusive collections</li>
@@ -131,23 +131,23 @@ export const sendWelcomeEmail = async (userEmail, userName) => {
               <p>Welcome to the family!</p>
               <p style="margin-top: 30px;">
                 Best regards,<br>
-                <strong>The Jerzey LAB Team</strong>
+                <strong>The JerseyLab Team</strong>
               </p>
             </div>
             <div class="footer">
-              <p>© ${new Date().getFullYear()} Jerzey LAB. All rights reserved.</p>
-              <p>You're receiving this email because you signed up for a Jerzey LAB account.</p>
+              <p>© ${new Date().getFullYear()} JerseyLab. All rights reserved.</p>
+              <p>You're receiving this email because you signed up for a JerseyLab account.</p>
             </div>
           </div>
         </body>
         </html>
       `,
       text: `
-        Welcome to Jerzey LAB, ${userName}!
+        Welcome to JerseyLab, ${userName}!
         
         Thank you for joining our community of athletes, influencers, and basketball enthusiasts.
         
-        We're excited to have you on board! At Jerzey LAB, we create premium athletic wear that represents the culture and passion of the game.
+        We're excited to have you on board! At JerseyLab, we create premium athletic wear that represents the culture and passion of the game.
         
         Start shopping: ${process.env.CLIENT_URL || 'http://localhost:5173'}
         
@@ -156,9 +156,9 @@ export const sendWelcomeEmail = async (userEmail, userName) => {
         Welcome to the family!
         
         Best regards,
-        The Jerzey LAB Team
+        The JerseyLab Team
         
-        © ${new Date().getFullYear()} Jerzey LAB. All rights reserved.
+        © ${new Date().getFullYear()} JerseyLab. All rights reserved.
       `
     }
 

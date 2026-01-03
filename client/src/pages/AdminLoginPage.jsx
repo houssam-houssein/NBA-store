@@ -105,7 +105,7 @@ const AdminLoginPage = () => {
     <div className='admin-login-page'>
       <div className='admin-login-card'>
         <p className='eyebrow'>ADMIN ACCESS</p>
-        <h1>Jerzey Lab Control Room</h1>
+        <h1>JerseyLab Control Room</h1>
         <p className='subheading'>Private entry point for the owner. Manage drops, orders, and the entire catalog.</p>
 
         <form className='admin-login-form' onSubmit={handleLoginSubmit}>

@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs'
 const adminSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true, lowercase: true, trim: true },
   password: { type: String, required: true },
-  name: { type: String, default: 'Jerzey Lab Owner' },
+  name: { type: String, default: 'JerseyLab Owner' },
   role: { 
     type: String, 
     enum: ['owner', 'admin', 'manager', 'staff'],
